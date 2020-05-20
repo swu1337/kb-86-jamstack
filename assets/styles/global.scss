@@ -1,0 +1,25 @@
+$c-primary: #223343;
+$c-secondary: #FFB700;
+$f-heading: 'Heebo', sans-serif;
+$f-body: 'Karla', sans-serif;
+
+.main__site {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section {
+  &__wrapper {
+    width: 75%;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  &__divider {
+    width: 100%;
+    height: 1px;
+    margin: 5rem 0;
+    background-color: $c-primary;
+  }
+}
