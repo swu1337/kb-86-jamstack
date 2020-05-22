@@ -15,20 +15,10 @@ import gql from 'graphql-tag';
 
 export default {
   apollo: {
-    allPosts: gql`query getAllPosts {
-      allPosts {
-      id
-      slug
-      title
-      author {
-        name
-      }
-      summary
-    }
-    }`,
     blogOverview: gql`query getSectionBlogOverView {
       blogOverview {
         description
+        buttonText
       }
     }`
   },
