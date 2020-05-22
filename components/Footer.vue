@@ -1,7 +1,7 @@
 <template>
   <footer class="footer" id="footer">
   <section class="footer__wrapper section__wrapper">
-    <span class="footer__text">Developed by Steven Wu with &lt;3</span>
+    <span class="footer__text">Developed by Steven Wu with &hearts;</span>
     <span class="footer__text">Built with
       <a class="footer__link" href="https://nuxtjs.org/" target="_blank">Nuxt.js</a>,
       <a class="footer__link" href="https://www.datocms.com/" target="_blank">DatoCMS</a> &amp;

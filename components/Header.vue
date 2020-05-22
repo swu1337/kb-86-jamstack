@@ -7,10 +7,10 @@
       <nav id="nav-main" class="nav--main" role="navigation">
         <ul class="nav__list--main">
           <li class="nav__list-item">
-            <a class="nav__link"  href="">Home</a>
+            <nuxt-link to="/" class="nav__link">Home</nuxt-link>
           </li>
           <li class="nav__list-item">
-            <a class="nav__link"  href="">Blogs</a>
+            <nuxt-link to="/blogs" class="nav__link">Blogs</nuxt-link>
           </li>
           <li>
             <a class="nav__link nav__button">Login</a>

@@ -25,7 +25,8 @@ export default {
   ** Global CSS
   */
   css: [
-    '@/assets/styles/vendors/normalize.css'
+    '@/assets/styles/vendors/normalize.css',
+    '@/assets/styles/global.scss',
   ],
   
   /*
@@ -43,8 +44,13 @@ export default {
   */
   modules: [
     '@nuxtjs/style-resources',
-    // '@nuxtjs/apollo'
+    '@nuxtjs/apollo'
   ],
+  apollo: {
+    clientConfigs: {
+      default: '~/apollo/config.js'
+    }
+  },
   styleResources: {
     scss: [
       '@/assets/styles/**/*.scss',
