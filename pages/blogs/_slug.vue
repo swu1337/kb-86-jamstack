@@ -15,7 +15,7 @@
             </div>
             <div class="article__byline">
               <span class="article__byline-icon"><Icons class-name="article__byline-svg" type="calender" /></span>
-              <span class="article__byline-text"><time :datetime="post._publishedAt">{{ post._publishedAt }}</time></span>
+              <span class="article__byline-text"><time :datetime="post.publicationDate">{{ formatDate(post.publicationDate) }}</time></span>
             </div>
           </div>
           <div class="article__body" v-html="post.content">
@@ -31,6 +31,9 @@ import Header from '~/components/Header.vue';
 import Footer from '~/components/Footer.vue';
 import Icons from '~/components/Icons.vue';
 
+import format from 'date-fns/format';
+import parseISO from 'date-fns/parseISO';
+
 import gql from 'graphql-tag';
 
 export default {
@@ -43,7 +46,7 @@ export default {
             name
             slug
         }
-        _publishedAt
+        publicationDate: _firstPublishedAt
         content
         featuredImage {
           alt
@@ -62,6 +65,11 @@ export default {
     Header,
     Footer,
     Icons
+  },
+  methods: {
+    formatDate(date) {
+      return format(parseISO(date), 'PPP');
+    }
   }
 }
 </script>
@@ -95,6 +103,40 @@ export default {
 
 .article__body {
   padding-top: 2rem;
+  font-size: 1.2rem;
+
+  * {
+    padding-bottom: 1.1rem;
+  }
+
+  ol, ul {
+    li {
+      padding-bottom: .2rem;
+    }
+  }
+
+  blockquote {
+    border-left: 2px solid $c-secondary;
+    padding: .6rem 0rem .6rem 1.3rem;
+    margin-bottom: 1.1rem;
+
+    p {
+      padding: 0;
+      font-size: 1.1rem;
+    }
+  }
+
+  table {
+    margin-bottom: 1.1rem;
+  }
+
+  p {
+    img {
+      display: block;
+      width: 75%;
+      height: auto;
+    }
+  }
 }
 
 .article__content {
