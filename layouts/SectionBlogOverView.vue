@@ -43,7 +43,7 @@
     }
   }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
   .blog-overview {
     &__description {
       font-size: 1.1rem;
