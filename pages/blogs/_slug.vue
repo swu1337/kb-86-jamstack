@@ -79,93 +79,95 @@ export default {
   line-height: 1.5;
 }
 
-.article__feature {
-  &-figure {
-    width: 100%;
-  }
+.article {
+  &__feature {
+    &-figure {
+        width: 100%;
+    }
 
-  &-media {
-    width: 100%;
-    height: 350px;
-    object-fit: cover;
-    object-position: center;
-  }
-}
-
-.article__author {
-  display: flex;
-}
-
-.article__content .article__title {
-  margin-top: 2rem;
-  font-size: 3.5rem;
-  margin-bottom: 0;
-}
-
-.article__body {
-  padding-top: 2rem;
-  font-size: 1.2rem;
-
-  * {
-    padding-bottom: 1.1rem;
-  }
-
-  ol, ul {
-    li {
-      padding-bottom: .2rem;
+    &-media {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      object-position: center;
     }
   }
 
-  blockquote {
-    border-left: 2px solid $c-secondary;
-    padding: .6rem 0rem .6rem 1.3rem;
-    margin-bottom: 1.1rem;
+  &__author {
+    display: flex;
+  }
+
+  &__content .article__title {
+    margin-top: 2rem;
+    font-size: 3.5rem;
+    margin-bottom: 0;
+  }
+
+  &__body {
+    padding-top: 2rem;
+    font-size: 1.2rem;
+
+    * {
+        padding-bottom: 1.1rem;
+     }
+
+    ol, ul {
+      li {
+        padding-bottom: .2rem;
+      }
+    }
+
+    blockquote {
+      border-left: 2px solid $c-secondary;
+      padding: .6rem 0rem .6rem 1.3rem;
+      margin-bottom: 1.1rem;
+
+      p {
+        padding: 0;
+        font-size: 1.1rem;
+      }
+    }
+
+    table {
+      margin-bottom: 1.1rem;
+    }
 
     p {
-      padding: 0;
-      font-size: 1.1rem;
+      img {
+        display: block;
+        width: 75%;
+        height: auto;
+      }
     }
   }
 
-  table {
-    margin-bottom: 1.1rem;
+  &__content {
+    width: 75%;
+    margin: 0 auto;
+    max-width: 60rem;
   }
 
-  p {
-    img {
+  &__byline {
+    display: flex;
+    margin-right: 1.5rem;
+
+    &-svg {
+      stroke: $c-primary
+    }
+
+    &-icon {
       display: block;
-      width: 75%;
-      height: auto;
+      margin-right: .4rem;
+    }
+
+    &-text {
+      color: $c-primary;
+    }
+
+    &-link--article {
+      font-size: .9rem;
+      padding-left: .3rem;
     }
   }
-}
-
-.article__content {
-  width: 75%;
-  margin: 0 auto;
-  max-width: 60rem;
-}
-
-.article__byline {
-  display: flex;
-  margin-right: 1.5rem;
-}
-
-.article__byline-svg {
-  stroke: $c-primary
-}
-
-.article__byline-icon {
-  display: block;
-  margin-right: .4rem;
-}
-
-.article__byline-text {
-  color: $c-primary;
-}
-
-.post-preview__byline-link--article {
-  font-size: .9rem;
-  padding-left: .3rem;
 }
 </style>
