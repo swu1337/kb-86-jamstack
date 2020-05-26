@@ -11,7 +11,7 @@
           <div class="article__author">
             <div class="article__byline">
               <span class="article__byline-icon"><Icons class-name="article__byline-svg" type="user" /></span>
-              <span class="article__byline-text">By<nuxt-link :to="`/blogs/author/${post.author.slug}`" class="post-preview__byline-link post-preview__byline-link--article">{{ post.author.name }}</nuxt-link></span>
+              <span class="article__byline-text">By<nuxt-link :to="`/blogs/author/${post.author.id}`" class="post-preview__byline-link post-preview__byline-link--article">{{ post.author.name }}</nuxt-link></span>
             </div>
             <div class="article__byline">
               <span class="article__byline-icon"><Icons class-name="article__byline-svg" type="calender" /></span>
@@ -43,6 +43,7 @@ export default {
         post(filter: {slug: {eq: $slug}}) {
           title
           author {
+            id
             name
             slug
         }
@@ -52,7 +53,7 @@ export default {
           alt
           url
         }
-      }
+        }
     }`,
       variables() {
         return {

@@ -13,7 +13,7 @@
             <nuxt-link to="/blogs" class="nav__link">Blogs</nuxt-link>
           </li>
           <li>
-            <a class="nav__link nav__button">Login</a>
+            <a href="https://kb-86.admin.datocms.com/" target="_blank" class="nav__link nav__button">Login</a>
           </li>
         </ul>
       </nav><!-- #nav -->

@@ -22,7 +22,7 @@
           title
           author {
             name
-            slug
+            id
           }
           summary
           featuredImage {

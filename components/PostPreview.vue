@@ -17,7 +17,7 @@
               <Icons class-name="post-preview__byline-svg" type="user" />
             </span>
             <span>
-              By <nuxt-link :to="`/blogs/author/${post.author.slug}`" class="post-preview__byline-link">{{ post.author.name }}</nuxt-link>
+              By <nuxt-link :to="`/blogs/author/${post.author.id}`" class="post-preview__byline-link">{{ post.author.name }}</nuxt-link>
             </span>
           </div>
           <p class="post-preview__text" v-html="summary"></p>
