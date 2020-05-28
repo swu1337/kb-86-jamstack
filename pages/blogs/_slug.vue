@@ -70,10 +70,6 @@ const fragmentMatcher = new IntrospectionFragmentMatcher({
 export default {
   apollo: {
     post: {
-      cache: new InMemoryCache({
-        fragmentMatcher
-      }),
-      fetchPolicy: 'no-cache',
       query: gql`query getSinglePost($slug: String) {
         post(filter: {slug: {eq: $slug}}) {
           content {
@@ -124,7 +120,11 @@ export default {
         return {
           slug: this.$route.params.slug
         }
-      }
+      },
+      cache: new InMemoryCache({
+        fragmentMatcher
+      }),
+      fetchPolicy: 'no-cache'
     }
   },
   components: {
@@ -188,6 +188,14 @@ export default {
     ol, ul {
       li {
         padding-bottom: .2rem;
+      }
+
+      ol, ul {
+        padding-bottom: 0;
+
+        li {
+          padding-bottom: 0;
+        }
       }
     }
 

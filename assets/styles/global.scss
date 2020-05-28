@@ -40,3 +40,60 @@ p {
 a {
   color: $c-secondary;
 }
+
+.button {
+  font-size: 1.1rem;
+  border-radius: 7px;
+  padding: 1rem 2rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  &__svg {
+    width: 24px;
+    height: 24px;
+    stroke: $c-primary;
+  }
+
+  &--intro {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid $c-primary;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4rem;
+
+    &:hover {
+      border-color: $c-secondary;
+      stroke: $c-secondary;
+
+      .button__svg {
+        stroke: $c-secondary;
+      }
+    }
+  }
+
+  &--submit {
+    margin: 1rem 0;
+    background-color: $c-primary;
+    color: white;
+
+    &:hover {
+      color: $c-primary;
+      background-color: $c-secondary;
+    }
+  }
+
+  &--reply, &--cancel {
+    font-size: .8rem; 
+    padding: .7em 1rem;
+    background-color: $c-primary;
+    color:white;
+  }
+
+  &--hide {
+    display: none;
+  }
+}
