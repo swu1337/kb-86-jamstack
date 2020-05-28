@@ -3,6 +3,7 @@
     <div v-if="landingPage">
       <div v-for="content in landingPage.content" :key="content.id">
         <IntroHero :section="content.introHero" v-if="content.introHero" />
+        <IntroTitleSubTitleText :section="content.introWithSubtitleTitleAndText" v-if="content.introWithSubtitleTitleAndText" />
       </div>
     </div>
   <pre v-if="landingPage">{{ landingPage.content }}</pre>
@@ -10,13 +11,14 @@
 </template>
 <script>
 import IntroHero from '~/components/content/IntroHero.vue';
-
+import IntroTitleSubTitleText from '~/components/content/IntroTitleSubTitleText.vue';
 
 import gql from 'graphql-tag';
 
 export default {
   components: {
-    IntroHero
+    IntroHero,
+    IntroTitleSubTitleText
   },
   apollo: {
     landingPage: {
