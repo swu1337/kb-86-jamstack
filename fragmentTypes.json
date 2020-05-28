@@ -1,0 +1,48 @@
+{
+  "__schema": {
+    "types": [
+      {
+        "kind": "UNION",
+        "name": "LandingPageModelContentField",
+        "possibleTypes": [
+          {
+            "name": "IntroHeroContentRecord"
+          },
+          {
+            "name": "IntroWithSubtitleTitleAndTextContentRecord"
+          },
+          {
+            "name": "TextImageContentRecord"
+          },
+          {
+            "name": "ProcessLineContentRecord"
+          },
+          {
+            "name": "TextAndSmallTextBlockContentRecord"
+          },
+          {
+            "name": "TeasePostsContentRecord"
+          }
+        ]
+      },
+      {
+        "kind": "UNION",
+        "name": "PostModelContentField",
+        "possibleTypes": [
+          {
+            "name": "WysiwygEditorRecord"
+          },
+          {
+            "name": "ImageRecord"
+          },
+          {
+            "name": "VideoRecord"
+          },
+          {
+            "name": "VideoEmbedRecord"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -11,14 +11,39 @@
           <div class="article__author">
             <div class="article__byline">
               <span class="article__byline-icon"><Icons class-name="article__byline-svg" type="user" /></span>
-              <span class="article__byline-text">By<nuxt-link :to="`/blogs/author/${post.author.id}`" class="post-preview__byline-link post-preview__byline-link--article">{{ post.author.name }}</nuxt-link></span>
+              <span class="article__byline-text">By<nuxt-link :to="`/blogs/author/${post.author.id}`" class="post-preview__byline-link article__byline-link">{{ post.author.name }}</nuxt-link></span>
             </div>
             <div class="article__byline">
               <span class="article__byline-icon"><Icons class-name="article__byline-svg" type="calender" /></span>
               <span class="article__byline-text"><time :datetime="post.publicationDate">{{ formatDate(post.publicationDate) }}</time></span>
             </div>
           </div>
-          <div class="article__body" v-html="post.content">
+          <div class="article__body">
+            <div class="article__body-content" v-for="model in post.content" :key="model.id">
+              <div class="article__source-text" v-if="model.textSource" v-html="model.textSource"></div>
+              <div class="article__source-image" v-if="model.imageSource">
+                <figure>
+                  <img :src="model.imageSource.url" :alt="model.imageSource.alt" />
+                </figure>
+              </div>
+              <div class="article__source-video" v-if="model.videoSource">
+                <figure>
+                  <video :src="model.videoSource.url" controls></video>
+                </figure>
+              </div>
+              <div class="article__source-video--embed" v-if="model.videoEmbedSource">
+                <figure>
+                  <iframe
+                    width="560" 
+                    height="315" 
+                    :src="getEmbededLink(model.videoEmbedSource)"
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                  </iframe>
+                </figure>
+              </div>
+            </div>
           </div>
         </section>
       </article>
@@ -36,25 +61,65 @@ import parseISO from 'date-fns/parseISO';
 
 import gql from 'graphql-tag';
 
+import possibleTypes from '~/fragmentTypes.json';
+import { InMemoryCache, IntrospectionFragmentMatcher } from 'apollo-cache-inmemory';
+const fragmentMatcher = new IntrospectionFragmentMatcher({
+    introspectionQueryResultData: possibleTypes
+})
+
 export default {
   apollo: {
     post: {
+      cache: new InMemoryCache({
+        fragmentMatcher
+      }),
+      fetchPolicy: 'no-cache',
       query: gql`query getSinglePost($slug: String) {
         post(filter: {slug: {eq: $slug}}) {
+          content {
+            ... on WysiwygEditorRecord {
+              id
+              textSource
+              _modelApiKey
+            }
+            ... on ImageRecord {
+              id
+              imageSource {
+                url
+              }
+              _modelApiKey
+            }
+            ... on VideoRecord {
+              id
+              videoSource {
+                url
+              }
+              _modelApiKey
+            }
+            ... on VideoEmbedRecord {
+              id
+              videoEmbedSource {
+                url
+                provider
+                providerUid
+              }
+              _modelApiKey
+            }
+          }
+          publicationDate: _firstPublishedAt
+          summary
+          slug
           title
+          featuredImage {
+            url
+            alt
+          }
           author {
             id
             name
-            slug
+          }
         }
-        publicationDate: _firstPublishedAt
-        content
-        featuredImage {
-          alt
-          url
-        }
-        }
-    }`,
+      }`,
       variables() {
         return {
           slug: this.$route.params.slug
@@ -70,6 +135,15 @@ export default {
   methods: {
     formatDate(date) {
       return format(parseISO(date), 'PPP');
+    },
+    getEmbededLink(source) {
+      if(source.provider === 'vimeo') {
+        return `https://player.vimeo.com/video/${source.providerUid}`
+      }
+
+      if(source.provider === 'youtube') {
+        return `https://www.youtube.com/embed/${source.providerUid}`
+      }
     }
   }
 }
@@ -132,12 +206,15 @@ export default {
       margin-bottom: 1.1rem;
     }
 
-    p {
-      img {
-        display: block;
-        width: 75%;
-        height: auto;
-      }
+    img {
+      display: block;
+      width: 75%;
+      height: auto;
+    }
+
+    video {
+      max-width: 75%;
+      height: auto;
     }
   }
 
@@ -164,7 +241,7 @@ export default {
       color: $c-primary;
     }
 
-    &-link--article {
+    &-link {
       font-size: .9rem;
       padding-left: .3rem;
     }

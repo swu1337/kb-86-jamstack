@@ -1,0 +1,10 @@
+# codegen.yml
+schema: 
+  - https://graphql.datocms.com/:
+      headers:
+        Authorization: 'Bearer 3c4da4f5da27569548c2b450bdd05c'
+overwrite: true
+generates:
+  ./fragmentTypes.json:
+    plugins:
+      - fragment-matcher
