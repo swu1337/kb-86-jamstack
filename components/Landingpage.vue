@@ -4,21 +4,27 @@
       <div v-for="content in landingPage.content" :key="content.id">
         <IntroHero :section="content.introHero" v-if="content.introHero" />
         <IntroTitleSubTitleText :section="content.introWithSubtitleTitleAndText" v-if="content.introWithSubtitleTitleAndText" />
+        <TextImage :section="content.textAndImage" v-if="content.textAndImage" />
+        <TeasePost :section="content.teasePost" v-if="content.teasePost" />
       </div>
     </div>
-  <pre v-if="landingPage">{{ landingPage.content }}</pre>
+  <!-- <pre v-if="landingPage">{{ landingPage.content }}</pre> -->
 </div>
 </template>
 <script>
 import IntroHero from '~/components/content/IntroHero.vue';
 import IntroTitleSubTitleText from '~/components/content/IntroTitleSubTitleText.vue';
+import TextImage from '~/components/content/TextImage.vue';
+import TeasePost from '~/components/content/TeasePost.vue';
 
 import gql from 'graphql-tag';
 
 export default {
   components: {
     IntroHero,
-    IntroTitleSubTitleText
+    IntroTitleSubTitleText,
+    TextImage,
+    TeasePost,
   },
   apollo: {
     landingPage: {
@@ -50,11 +56,10 @@ export default {
               textAndImage {
                 image {
                   alt
-                  url
+                  url(imgixParams: {h: "356", w: "585", fit:crop})
                 }
                 text
                 verticalAlignment {
-                  aligment
                   properties
                 }
                 flipHorizontally
