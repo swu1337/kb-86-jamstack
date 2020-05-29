@@ -28,7 +28,7 @@ export default {
 }
 </script>
 <style lang="scss">
-.intro_hero__section {
+.section__wrapper.intro_hero__section {
   display: flex;
   justify-content: space-between;
   position: relative;
@@ -36,25 +36,27 @@ export default {
   margin-bottom: 4rem;
 }
 
-.intro_hero__description {
-  padding-left: 6rem;
-  max-width: 40%;
-  flex: 1 0 40%;
-}
+.intro_hero {
+  &__description {
+    padding-left: 6rem;
+    max-width: 45%;
+    flex: 1 0 45%;
 
-.intro_hero__description h1 {
-  margin-top: 0;
-  font-size: 4rem;
-}
+    h1 {
+      margin-top: 0;
+      font-size: 4rem;
+    }
 
-.intro_hero__description p {
-  font-size: 1.375rem;
-  line-height: 2rem;
-}
+    p {
+      font-size: 1.375rem;
+      line-height: 2rem;
+    }
+  }
 
-.intro_hero__image {
-  max-width: 50%;
-  flex: 1 0 50%;
+  &__image {
+    max-width: 50%;
+    flex: 1 0 50%;
+  }
 }
 
 .vertical-bar {

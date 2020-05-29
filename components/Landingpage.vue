@@ -6,9 +6,10 @@
         <IntroTitleSubTitleText :section="content.introWithSubtitleTitleAndText" v-if="content.introWithSubtitleTitleAndText" />
         <TextImage :section="content.textAndImage" v-if="content.textAndImage" />
         <TeasePost :section="content.teasePost" v-if="content.teasePost" />
+        <TextSmallTextBlock :section="content.textAndSmallTextBlock" v-if="content.textAndSmallTextBlock" />
       </div>
     </div>
-  <!-- <pre v-if="landingPage">{{ landingPage.content }}</pre> -->
+  <pre v-if="landingPage">{{ landingPage.content }}</pre>
 </div>
 </template>
 <script>
@@ -16,6 +17,7 @@ import IntroHero from '~/components/content/IntroHero.vue';
 import IntroTitleSubTitleText from '~/components/content/IntroTitleSubTitleText.vue';
 import TextImage from '~/components/content/TextImage.vue';
 import TeasePost from '~/components/content/TeasePost.vue';
+import TextSmallTextBlock from '~/components/content/TextSmallTextBlock.vue';
 
 import gql from 'graphql-tag';
 
@@ -25,6 +27,7 @@ export default {
     IntroTitleSubTitleText,
     TextImage,
     TeasePost,
+    TextSmallTextBlock
   },
   apollo: {
     landingPage: {
