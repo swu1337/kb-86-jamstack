@@ -1,5 +1,6 @@
 <template>
   <footer class="footer" id="footer">
+  <AuthorList :posts="allPosts" :authors="allAuthors" />
   <section class="footer__wrapper section__wrapper">
     <span class="footer__text">Developed by Steven Wu with &hearts;</span>
     <span class="footer__text">Built with
@@ -10,6 +11,33 @@
   </section>
 </footer>
 </template>
+<script>
+  import PostPreview from '~/components/PostPreview.vue';
+  import AuthorList from '~/components/AuthorList.vue';
+
+  import gql from 'graphql-tag';
+
+  export default {
+    components: {
+      AuthorList
+    },
+    apollo: {
+      allPosts: gql`query MyQuery {
+        allPosts {
+          author {
+            id
+          }
+        }
+      }`,
+      allAuthors: gql`query getAllAuthors {
+        allAuthors {
+          id
+          name
+        }
+      }`
+    }
+  }
+</script>
 <style lang="scss" scoped>
 .footer {  
   width: 100%;
@@ -19,6 +47,7 @@
   &__wrapper {
     display: flex;
     justify-content: space-between;
+    margin-top: 2rem;
   }
 
   &__text {

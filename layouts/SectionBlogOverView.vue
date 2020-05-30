@@ -6,6 +6,9 @@
       <div class="tease-posts__collections">
         <PostPreview :button-text="blogOverview" :post="post" v-for="post in allPosts" :key="post.id" />
       </div>
+      <div class="blog-overview__authors">
+
+      </div>
     </section>
   </client-only>
 </template>
@@ -35,6 +38,12 @@
         blogOverview {
           description
           buttonText
+        }
+      }`,
+      allAuthors: gql`query getAllAuthors {
+        allAuthors {
+          id
+          name
         }
       }`
     },

@@ -7,9 +7,9 @@
         <TextImage :section="content.textAndImage" v-if="content.textAndImage" />
         <TeasePost :section="content.teasePost" v-if="content.teasePost" />
         <TextSmallTextBlock :section="content.textAndSmallTextBlock" v-if="content.textAndSmallTextBlock" />
+        <ProcessLine :section="content.processLine" v-if="content.processLine" />
       </div>
     </div>
-  <pre v-if="landingPage">{{ landingPage.content }}</pre>
 </div>
 </template>
 <script>
@@ -18,6 +18,7 @@ import IntroTitleSubTitleText from '~/components/content/IntroTitleSubTitleText.
 import TextImage from '~/components/content/TextImage.vue';
 import TeasePost from '~/components/content/TeasePost.vue';
 import TextSmallTextBlock from '~/components/content/TextSmallTextBlock.vue';
+import ProcessLine from '~/components/content/ProcessLine.vue';
 
 import gql from 'graphql-tag';
 
@@ -27,7 +28,8 @@ export default {
     IntroTitleSubTitleText,
     TextImage,
     TeasePost,
-    TextSmallTextBlock
+    TextSmallTextBlock,
+    ProcessLine
   },
   apollo: {
     landingPage: {
@@ -72,6 +74,7 @@ export default {
               id
               textAndSmallTextBlock {
                 blocks {
+                  id
                   blockTitle
                   blockSubtitle
                 }
@@ -90,6 +93,7 @@ export default {
               id
               processLine {
                 processes {
+                  id
                   processName
                 }
               }

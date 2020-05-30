@@ -109,13 +109,14 @@ export default {
 
     &__subtitle {
       padding-top: 3rem;
-      font-size: 1.8rem;
+      font-size: 1.3rem;
       font-weight: bold;
     }
 
     &__title {
-      font-size: 3.5rem;
+      font-size: 2rem;
       margin-top: 0;
+      margin-bottom: 3rem;
 
       &--blogposts {
         padding-top: 3rem;
@@ -131,7 +132,7 @@ export default {
 
       &-title {
         margin-bottom: .5rem;
-        font-size: 2rem;
+        font-size: 1.6rem;
       }
 
       &-text {

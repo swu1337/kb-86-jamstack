@@ -1,9 +1,9 @@
 <template>
-  <header class="section__wrapper">
+  <header class="header">
     <section class="header__section">
-      <a class="hdr-logo-link" href="/" rel="home">
+      <nuxt-link to="/" class="hdr-logo-link" rel="home">
         <Logo />
-      </a>
+      </nuxt-link>
       <nav id="nav-main" class="nav--main" role="navigation">
         <ul class="nav__list--main">
           <li class="nav__list-item">
@@ -71,11 +71,19 @@ export default {
   }
 }
 
-.header__section {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 120px;
+.header {
+  top: 0;
+  position: sticky;
+  z-index: 10;
+  background-color: white;
+
+  &__section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 75%;
+    height: 120px;
+    margin: 0 auto;
+  }
 }
 </style>
