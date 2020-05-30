@@ -1,6 +1,5 @@
 <template>
   <section class=" section__wrapper">
-    <pre>{{ section }}</pre>
     <div class="process-line">
       <div class="process-line__processes">
         <div class="process-line__wrapper" v-for="(process, index) in section.processes" :key="process.id">

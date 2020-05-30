@@ -19,49 +19,49 @@ export default {
   },
   methods: {
     amountPosts(a) {
-      let filtered = this.posts.filter((post) => post.author.id == a.id);
+      let filtered = this.posts.filter((post) => post.author.id === a.id);
       return filtered.length;
     },
   }
 }
 </script>
 <style lang="scss">
-  .author-list {
-    &__section {
-      padding-top: 4rem;
-    }
+.author-list {
+  &__section {
+    padding-top: 4rem;
+  }
 
-    &__heading {
-      color: white;
-      font-size: 1.5rem;
-      padding-bottom: 1rem;
-    }
+  &__heading {
+    color: white;
+    font-size: 1.5rem;
+    padding-bottom: 1rem;
+  }
 
-    &__list {
-      list-style-type: none;
-      display: flex;
-      flex-wrap: wrap;
-      padding: 0;
-    }
+  &__list {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+  }
 
-    &__item {
-      flex: 1 0 23%;
-      max-width: 23%;
-      font-size: 1.2rem;
-    }
+  &__item {
+    flex: 1 0 23%;
+    max-width: 23%;
+    font-size: 1.2rem;
+  }
 
-    &__link {
-      display: inline-block;
-      text-decoration: none;
-      padding-bottom: .8rem;
+  &__link {
+    display: inline-block;
+    text-decoration: none;
+    padding-bottom: .8rem;
 
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-
-    &__amount {
-      color: white;
+    &:hover {
+      text-decoration: underline;
     }
   }
+
+  &__amount {
+    color: white;
+  }
+}
 </style>

@@ -15,7 +15,10 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Heebo:wght@500;700&display=swap' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap' },
-    ]
+    ],
+    script: [{
+      src: '/scripts/header.js'
+    }],
   },
   /*
   ** Customize the progress-bar color
@@ -28,7 +31,6 @@ export default {
     '@/assets/styles/vendors/normalize.css',
     '@/assets/styles/global.scss',
   ],
-  
   /*
   ** Plugins to load before mounting the App
   */

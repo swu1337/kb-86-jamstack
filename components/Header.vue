@@ -85,5 +85,9 @@ export default {
     height: 120px;
     margin: 0 auto;
   }
+
+  &--scrolled {
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2);
+  }
 }
 </style>
