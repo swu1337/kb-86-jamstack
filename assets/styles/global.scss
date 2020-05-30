@@ -3,6 +3,10 @@ $c-secondary: #FFB700;
 $f-heading: 'Heebo', sans-serif;
 $f-body: 'Karla', sans-serif;
 
+html {
+  scroll-behavior: smooth;
+}
+
 .main__site {
   display: flex;
   flex-direction: column;

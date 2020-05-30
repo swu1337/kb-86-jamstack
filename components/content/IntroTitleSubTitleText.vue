@@ -1,6 +1,6 @@
 <template>
   <section class="section__wrapper">
-    <div :id="section.IntroWithSubtitleTitleAndText" class="intro_text">
+    <div :id="section.introductionWithSubtitleTitleAndTextId" class="intro_text">
       <p class="intro_text__sub">{{ section.subtitle }}</p>
       <div class="intro_text__description" v-html="section.description">
       </div>
