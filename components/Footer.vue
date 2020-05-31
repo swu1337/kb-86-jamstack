@@ -2,11 +2,11 @@
   <footer class="footer" id="footer">
   <AuthorList :posts="allPosts" :authors="allAuthors" />
   <section class="footer__wrapper section__wrapper">
-    <span class="footer__text">Developed by Steven Wu with &hearts;</span>
-    <span class="footer__text">Built with
-      <a class="footer__link" href="https://nuxtjs.org/" target="_blank">Nuxt.js</a>,
-      <a class="footer__link" href="https://www.datocms.com/" target="_blank">DatoCMS</a> &amp;
-      <a class="footer__link" href="https://github.com/nuxt-community/apollo-module" target="_blank">Apollo</a>
+    <span class="footer__text">Ontwikkeld door Steven Wu met &hearts;</span>
+    <span class="footer__text">Gemaakt met
+      <a class="footer__link" href="https://nuxtjs.org/" target="_blank" rel="noreferrer">Nuxt.js</a>,
+      <a class="footer__link" href="https://www.datocms.com/" target="_blank" rel="noreferrer">DatoCMS</a> &amp;
+      <a class="footer__link" href="https://github.com/nuxt-community/apollo-module" target="_blank" rel="noreferrer">Apollo</a>
     </span>
   </section>
 </footer>

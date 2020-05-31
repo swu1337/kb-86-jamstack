@@ -63,7 +63,7 @@ a {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    border: 2px solid $c-primary;
+    border: 3px solid $c-primary;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -110,5 +110,20 @@ a {
   p {
     padding-top: 1.2rem;
     line-height: 1.7rem;
+  }
+}
+
+.screen-reader {
+  &__text {
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    word-wrap: normal !important;
   }
 }

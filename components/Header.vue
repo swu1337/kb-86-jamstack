@@ -2,6 +2,7 @@
   <header class="header">
     <section class="header__section">
       <nuxt-link to="/" class="hdr-logo-link" rel="home">
+        <span class="screen-reader__text">Ga naar Home</span>
         <Logo />
       </nuxt-link>
       <nav id="nav-main" class="nav--main" role="navigation">
@@ -13,7 +14,7 @@
             <nuxt-link to="/blogs" class="nav__link">Blogs</nuxt-link>
           </li>
           <li>
-            <a href="https://kb-86.admin.datocms.com/" target="_blank" class="nav__link nav__button">Login</a>
+            <a href="https://kb-86.admin.datocms.com/" target="_blank" rel="noreferrer" class="nav__link nav__button">Inloggen</a>
           </li>
         </ul>
       </nav><!-- #nav -->
@@ -30,7 +31,7 @@ export default {
   }
 }
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 .nav {
   &__list {
 

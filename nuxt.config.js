@@ -5,7 +5,11 @@ export default {
   ** Headers of the page
   */
   head: {
+    
     title: process.env.npm_package_name || '',
+    htmlAttrs: {
+      lang: 'nl',
+    },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -17,7 +21,7 @@ export default {
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap' },
     ],
     script: [{
-      src: '/scripts/header.js'
+      src: '/scripts/header.js', body: true
     }],
   },
   /*

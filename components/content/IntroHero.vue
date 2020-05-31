@@ -6,7 +6,7 @@
     </div>
     <div class="intro_hero__description">
       <div v-html="section.description"></div>
-      <a :href="section.jumperToId" class="button--intro"><Icons class-name="button__svg" type="arrow-down" /></a>
+      <a :href="section.jumperToId" class="button--intro"><span class="screen-reader__text">Lees verder</span><Icons class-name="button__svg" type="arrow-down" /></a>
     </div>
     <div class="intro_hero__image">
       <figure class="intro_hero__figure">
@@ -53,6 +53,21 @@ export default {
     p {
       font-size: 1.375rem;
       line-height: 2rem;
+    }
+  }
+
+  &__link {
+    &-text {
+      border: 0;
+      clip: rect(1px, 1px, 1px, 1px);
+      clip-path: inset(50%);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+      word-wrap: normal !important;
     }
   }
 

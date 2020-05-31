@@ -3,7 +3,7 @@
     <section>
       <Header />
       <section class="author__section section__wrapper" v-if="author">
-        <p class="author__subtitle">Author:</p>
+        <p class="author__subtitle">Auteur:</p>
         <h1 class="author__title">{{ author.name }}</h1>
         <div class="author__description">
           <figure class="author__figure" v-if="author.photo">
@@ -14,11 +14,11 @@
             <Icons class-name="author__svg" type="user" />
           </div>
           <div class="author__about">
-            <h2 class="author__description-title">About me</h2>
+            <h2 class="author__description-title">Over mij</h2>
             <p class="author__description-text">{{ author.description }}</p>
           </div>
         </div>
-        <h3 class="author__title--blogposts">Related blogposts</h3>
+        <h3 class="author__title--blogposts">Gerelateerde blogs</h3>
         <div class="tease-posts__collections">
           <PostPreview :button-text="button" :post="post" v-for="post in allPosts" :key="post.id" />
         </div>

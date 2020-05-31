@@ -1,10 +1,10 @@
 <template>
   <div class="author-list__section">
     <div class="section__wrapper">
-      <h3 class="author-list__heading">Our students</h3>
+      <h3 class="author-list__heading">Onze studenten</h3>
       <ul class="author-list__list">
         <li class="author-list__item" v-for="author in authors" :key="author.id">
-          <nuxt-link class="author-list__link" :to="`/blogs/author/${author.id}`">{{ author.name }}</nuxt-link>
+          <nuxt-link class="author-list__link" :to="`/blogs/author/${author.id}`" :title="`Blogs van ${author.name}`">{{ author.name }}</nuxt-link>
           <span class="author-list__amount">({{ amountPosts(author) }})</span>
         </li>
       </ul>
@@ -33,7 +33,7 @@ export default {
 
   &__heading {
     color: white;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     padding-bottom: 1rem;
   }
 

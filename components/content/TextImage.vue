@@ -1,6 +1,5 @@
 <template>
   <section class="section__wrapper">
-    <pre>{{section}}</pre>
     <div class="text-and-image" :class="[{'text-and-image--reverse': section.flipHorizontally}, section.verticalAlignment.properties]">
       <div class="text-and-image__description description" v-html="section.text">
       </div>
