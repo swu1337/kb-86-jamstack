@@ -5,47 +5,47 @@ const API_URL = 'https://graphql.datocms.com/';
 const dynamicRoutes = async () => {
   const resForPosts = await axios.post(
     API_URL,
-    { 
+    {
+      query: `
+        query getPostsSlug {
+          allPosts {
+            slug
+          }
+        }
+      `
+    },
+    {
       headers: {
         'Authorization': `Bearer 3c4da4f5da27569548c2b450bdd05c`
-      },
-      data: {
-        query: `
-          query getPostsSlug {
-            allPosts {
-              slug
-            }
-          }
-        `
       }
     }
   );
 
   const resForAuthors = await axios.post(
     API_URL,
-    { 
+    {
+      query: `
+        query getAuthorsSlug {
+          allAuthors {
+            id
+          }
+        }
+      `
+    },
+    {
       headers: {
         'Authorization': `Bearer 3c4da4f5da27569548c2b450bdd05c`
-      },
-      data: {
-        query: `
-          query getAuthorsSlug {
-            allAuthors {
-              id
-            }
-          }
-        `
       }
     }
   );
-
-  const routesForPosts = resForPosts.data.allPosts.map(post =>{
+  
+  const routesForPosts = resForPosts.data.data.allPosts.map(post => {
     return {
       route: `/blogs/${post.slug}`
     }
   });
 
-  const routesForAuthors = resForPosts.data.allAuthors.map(author =>{
+  const routesForAuthors = resForAuthors.data.data.allAuthors.map(author => {
     return {
       route: `/blogs/author/${author.id}`
     }
@@ -54,9 +54,6 @@ const dynamicRoutes = async () => {
   const routes = routesForPosts.concat(routesForAuthors);
   return routes;
 }
-
-
-
 
 export default {
   mode: 'universal',
