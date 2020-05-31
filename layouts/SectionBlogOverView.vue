@@ -6,9 +6,6 @@
       <div class="tease-posts__collections">
         <PostPreview :button-text="blogOverview" :post="post" v-for="post in allPosts" :key="post.id" />
       </div>
-      <div class="blog-overview__authors">
-
-      </div>
     </section>
   </client-only>
 </template>
@@ -29,8 +26,17 @@
           }
           summary
           featuredImage {
-            url
-            alt
+            responsiveImage(imgixParams: { fit: crop, w: 565, h: 376, auto: format }) {
+              srcSet
+              webpSrcSet
+              sizes
+              src
+              width
+              aspectRatio
+              alt
+              title
+              base64
+            }
           }
         }
       }`,

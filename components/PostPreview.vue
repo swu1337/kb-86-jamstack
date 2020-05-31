@@ -2,7 +2,8 @@
   <article class="post-preview">
     <nuxt-link :to="`/blogs/${post.slug}`" class="post-preview__link post-preview__link--wrapper">
       <figure class="post-preview__figure" v-if="post.featuredImage">
-        <img :src="post.featuredImage.url" :alt="post.featuredImage.alt" class="post-preview__media" />
+        <!-- <img :src="post.featuredImage.url" :alt="post.featuredImage.alt" class="post-preview__media" /> -->
+        <datocms-image class="post-preview__media" :data="post.featuredImage.responsiveImage" />
       </figure>
       <figure class="post-preview__figure" v-else>
         <div class="post-preview__media post-preview__media--placeholder">
@@ -34,6 +35,7 @@
 </template>
 <script>
   import Icons from '~/components/Icons.vue';
+  import { Image } from 'vue-datocms';
 
   export default {
     props: {
@@ -41,7 +43,8 @@
       buttonText: Object
     },
     components: {
-      Icons
+      Icons,
+      'datocms-image': Image
     },
     computed: {
       summary() {
@@ -66,6 +69,11 @@
         width: 100%;
         height: 100%;
         box-shadow: none;
+      }
+
+      .post-preview__button {
+        background-color: $c-secondary;
+        color: $c-primary;
       }
     }
 
@@ -95,6 +103,12 @@
       box-shadow: 0px 0px 8px rgba(0, 0, 0, .16);
       border-radius: 6px 6px 0 0;
       transition: all .1s ease-in-out;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
 
       &--placeholder {
         background-color: $c-primary;

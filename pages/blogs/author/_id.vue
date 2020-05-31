@@ -7,7 +7,8 @@
         <h1 class="author__title">{{ author.name }}</h1>
         <div class="author__description">
           <figure class="author__figure" v-if="author.photo">
-            <img class="author__media" v-if="author" :src="author.photo.url" :alt="author.photo.alt" />
+            <!-- <img class="author__media" v-if="author" :src="author.photo.url" :alt="author.photo.alt" /> -->
+            <datocms-image class="author__media" :data="author.photo.responsiveImage" />
           </figure>
           <div class="author__figure" v-else>
             <Icons class-name="author__svg" type="user" />
@@ -33,6 +34,7 @@ import PostPreview from '~/components/PostPreview.vue';
 import Icons from '~/components/Icons.vue';
 
 import gql from 'graphql-tag';
+import { Image } from 'vue-datocms';
 
 export default {
   data() {
@@ -61,8 +63,17 @@ export default {
           }
           summary
           featuredImage {
-            url
-            alt
+            responsiveImage(imgixParams: { fit: crop, w: 569, h: 427, auto: format }) {
+              srcSet
+              webpSrcSet
+              sizes
+              src
+              width
+              aspectRatio
+              alt
+              title
+              base64
+            }
           }
         }
       }`,
@@ -80,8 +91,17 @@ export default {
           slug
           description
           photo {
-            url
-            alt
+            responsiveImage(imgixParams: { fit: crop, w: 128, h: 128, auto: format }) {
+              srcSet
+              webpSrcSet
+              sizes
+              src
+              width
+              aspectRatio
+              alt
+              title
+              base64
+            }
           }
         }
       }`,
@@ -96,7 +116,8 @@ export default {
     Header,
     Footer,
     PostPreview,
-    Icons
+    Icons,
+    'datocms-image': Image
   }
   
 }

@@ -8,19 +8,22 @@
       <div v-html="section.description"></div>
       <a :href="section.jumperToId" class="button--intro"><Icons class-name="button__svg" type="arrow-down" /></a>
     </div>
-    <div class="image_hero__image">
-      <figure class="image_hero__figure">
-        <img :src="section.imageHero.url" :alt="section.imageHero.alt" class="image_hero__media" />
+    <div class="intro_hero__image">
+      <figure class="intro_hero__figure">
+        <!-- <img :src="section.imageHero.url" :alt="section.imageHero.alt" class="image_hero__media" /> -->
+        <datocms-image class="intro_hero__media" :data="section.imageHero.responsiveImage" />
       </figure>
     </div>
   </section>
 </template>
 <script>
 import Icons from '~/components/Icons.vue';
+import { Image } from 'vue-datocms';
 
 export default {
   components: {
     Icons,
+    'datocms-image': Image
   },
   props: {
     section: Object
@@ -54,8 +57,17 @@ export default {
   }
 
   &__image {
-    max-width: 50%;
-    flex: 1 0 50%;
+    max-width: 45%;
+    flex: 1 0 45%;
+  }
+
+  &__figure {
+    width: 100%;
+  }
+
+  &__media {
+    width: 100%;
+    height: auto;
   }
 }
 

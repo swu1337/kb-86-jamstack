@@ -41,8 +41,17 @@ export default {
               introHero {
                 description
                 imageHero {
-                  url(imgixParams: {h: "376", w: "570"})
-                  alt
+                  responsiveImage(imgixParams: { fit: crop, w: 565, h: 376, auto: format }) {
+                    srcSet
+                    webpSrcSet
+                    sizes
+                    src
+                    width
+                    aspectRatio
+                    alt
+                    title
+                    base64
+                  }
                 }
                 jumperToId
                 courseCode
@@ -60,8 +69,17 @@ export default {
               id
               textAndImage {
                 image {
-                  alt
-                  url(imgixParams: {h: "356", w: "585", fit:crop})
+                  responsiveImage(imgixParams: { fit: crop, w: 550, h: 334, auto: format }) {
+                    srcSet
+                    webpSrcSet
+                    sizes
+                    src
+                    width
+                    aspectRatio
+                    alt
+                    title
+                    base64
+                  }
                 }
                 text
                 verticalAlignment {

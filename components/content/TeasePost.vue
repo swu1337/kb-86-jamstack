@@ -28,8 +28,17 @@ export default {
         }
         summary
         featuredImage {
-          url
-          alt
+          responsiveImage(imgixParams: { fit: crop, w: 358, h: 250, auto: format }) {
+            srcSet
+            webpSrcSet
+            sizes
+            src
+            width
+            aspectRatio
+            alt
+            title
+            base64
+          }
         }
       }
     }`

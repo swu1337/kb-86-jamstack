@@ -3,8 +3,9 @@
     <Header />
     <section class="section__wrapper">
       <article class="article" v-if="post">
-        <figure class="article__feature-figure section__wrapper" v-if="post.featuredImage">
-            <img class="article__feature-media" :src="post.featuredImage.url" :alt="post.featuredImage.alt" />
+        <figure class="article__feature-figure" v-if="post.featuredImage">
+            <!-- <img class="article__feature-media" :src="post.featuredImage.url" :alt="post.featuredImage.alt" /> -->
+            <datocms-image class="article__feature-media" :data="post.featuredImage.responsiveImage" />
         </figure>
         <section class="article__content entry-content">
           <h1 class="article__title">{{ post.title }}</h1>
@@ -22,8 +23,9 @@
             <div class="article__body-content" v-for="model in post.content" :key="model.id">
               <div class="article__source-text" v-if="model.textSource" v-html="model.textSource"></div>
               <div class="article__source-image" v-if="model.imageSource">
-                <figure>
-                  <img :src="model.imageSource.url" :alt="model.imageSource.alt" />
+                <figure class="article__source-figure" >
+                  <!-- <img :src="model.imageSource.url" :alt="model.imageSource.alt" /> -->
+                  <datocms-image class="article__source-image-media" :data="model.imageSource.responsiveImage" />
                 </figure>
               </div>
               <div class="article__source-video" v-if="model.videoSource">
@@ -32,7 +34,7 @@
                 </figure>
               </div>
               <div class="article__source-video--embed" v-if="model.videoEmbedSource">
-                <figure>
+                <figure class="article__source-figure">
                   <iframe
                     width="560" 
                     height="315" 
@@ -58,14 +60,9 @@ import Icons from '~/components/Icons.vue';
 
 import format from 'date-fns/format';
 import parseISO from 'date-fns/parseISO';
+import { Image } from 'vue-datocms';
 
 import gql from 'graphql-tag';
-
-import possibleTypes from '~/fragmentTypes.json';
-import { InMemoryCache, IntrospectionFragmentMatcher } from 'apollo-cache-inmemory';
-const fragmentMatcher = new IntrospectionFragmentMatcher({
-    introspectionQueryResultData: possibleTypes
-})
 
 export default {
   apollo: {
@@ -81,7 +78,17 @@ export default {
             ... on ImageRecord {
               id
               imageSource {
-                url
+                responsiveImage(imgixParams: { fit: crop, w: 569, h: 427, auto: format }) {
+                  srcSet
+                  webpSrcSet
+                  sizes
+                  src
+                  width
+                  aspectRatio
+                  alt
+                  title
+                  base64
+                }
               }
               _modelApiKey
             }
@@ -107,8 +114,17 @@ export default {
           slug
           title
           featuredImage {
-            url
-            alt
+            responsiveImage(imgixParams: { fit: crop, w: 1011, h: 350, auto: format }) {
+              srcSet
+              webpSrcSet
+              sizes
+              src
+              width
+              aspectRatio
+              alt
+              title
+              base64
+            }
           }
           author {
             id
@@ -116,21 +132,20 @@ export default {
           }
         }
       }`,
+      prefetch: ({ route }) => ({ slug: route.params.slug }),
       variables() {
         return {
           slug: this.$route.params.slug
         }
       },
-      cache: new InMemoryCache({
-        fragmentMatcher
-      }),
       fetchPolicy: 'no-cache'
     }
   },
   components: {
     Header,
     Footer,
-    Icons
+    Icons,
+    'datocms-image': Image
   },
   methods: {
     formatDate(date) {
@@ -162,8 +177,12 @@ export default {
     &-media {
       width: 100%;
       height: 350px;
-      object-fit: cover;
-      object-position: center;
+      
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
     }
   }
 
@@ -181,11 +200,16 @@ export default {
     padding-top: 2rem;
     font-size: 1.2rem;
 
-    * {
-        padding-bottom: 1.1rem;
-     }
+    h1, h2, h3, h4, h5, h6 {
+      padding-bottom: 2rem;
+    }
+
+    p {
+      padding-bottom: 2rem;
+    }
 
     ol, ul {
+      margin-bottom: 2rem;
       li {
         padding-bottom: .2rem;
       }
@@ -202,27 +226,37 @@ export default {
     blockquote {
       border-left: 2px solid $c-secondary;
       padding: .6rem 0rem .6rem 1.3rem;
-      margin-bottom: 1.1rem;
+      margin-bottom: 2rem;
 
       p {
         padding: 0;
-        font-size: 1.1rem;
+        font-size: 2rem;
       }
     }
 
     table {
-      margin-bottom: 1.1rem;
-    }
-
-    img {
-      display: block;
-      width: 75%;
-      height: auto;
+      margin-bottom: 2rem;
     }
 
     video {
       max-width: 75%;
       height: auto;
+      margin-bottom: 2rem;
+    }
+  }
+
+  &__source {
+
+    &-figure {
+      margin-bottom: 2rem;
+    }
+
+    &-image {
+      &-media {
+        display: block;
+        width: 75%;
+        height: auto;
+      }
     }
   }
 
@@ -234,7 +268,7 @@ export default {
 
   &__byline {
     display: flex;
-    margin-right: 1.5rem;
+    margin-right: 2rem;
 
     &-svg {
       stroke: $c-primary

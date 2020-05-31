@@ -16,7 +16,8 @@
     "@nuxtjs/style-resources": "^1.0.0",
     "date-fns": "^2.14.0",
     "graphql-tag": "^2.10.3",
-    "nuxt": "^2.0.0"
+    "nuxt": "^2.0.0",
+    "vue-datocms": "0.0.7"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^1.15.0",

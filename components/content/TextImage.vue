@@ -1,16 +1,23 @@
 <template>
   <section class="section__wrapper">
+    <pre>{{section}}</pre>
     <div class="text-and-image" :class="[{'text-and-image--reverse': section.flipHorizontally}, section.verticalAlignment.properties]">
       <div class="text-and-image__description description" v-html="section.text">
       </div>
       <figure class="text-and-image__figure">
-        <img :src="section.image.url" :alt="section.image.alt" class="text-and-image__media" />
+        <!-- <img :src="section.image.url" :alt="section.image.alt" class="text-and-image__media" /> -->
+        <datocms-image class="text-and-image__media" :data="section.image.responsiveImage" />
       </figure>
     </div>
   </section>
 </template>
 <script>
+import { Image } from 'vue-datocms';
+
 export default {
+  components: {
+    'datocms-image': Image
+  },
   props: {
     section: Object
   }
