@@ -1,6 +1,6 @@
 <template>
   <header class="header">
-    <section class="header__section">
+    <section class="header__section section__wrapper">
       <nuxt-link to="/" class="hdr-logo-link" rel="home">
         <span class="screen-reader__text">Ga naar Home</span>
         <Logo />
@@ -77,14 +77,13 @@ export default {
   position: sticky;
   z-index: 10;
   background-color: white;
-
+  margin-bottom: 2rem;
+  
   &__section {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 75%;
     height: 120px;
-    margin: 0 auto;
   }
 
   &--scrolled {

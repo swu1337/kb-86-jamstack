@@ -10,7 +10,6 @@
     </div>
     <div class="intro_hero__image">
       <figure class="intro_hero__figure">
-        <!-- <img :src="section.imageHero.url" :alt="section.imageHero.alt" class="image_hero__media" /> -->
         <datocms-image class="intro_hero__media" :data="section.imageHero.responsiveImage" />
       </figure>
     </div>

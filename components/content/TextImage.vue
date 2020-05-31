@@ -4,7 +4,6 @@
       <div class="text-and-image__description description" v-html="section.text">
       </div>
       <figure class="text-and-image__figure">
-        <!-- <img :src="section.image.url" :alt="section.image.alt" class="text-and-image__media" /> -->
         <datocms-image class="text-and-image__media" :data="section.image.responsiveImage" />
       </figure>
     </div>

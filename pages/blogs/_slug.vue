@@ -4,7 +4,6 @@
     <section class="section__wrapper">
       <article class="article" v-if="post">
         <figure class="article__feature-figure" v-if="post.featuredImage">
-            <!-- <img class="article__feature-media" :src="post.featuredImage.url" :alt="post.featuredImage.alt" /> -->
             <datocms-image class="article__feature-media" :data="post.featuredImage.responsiveImage" />
         </figure>
         <section class="article__content entry-content">
@@ -24,7 +23,6 @@
               <div class="article__source-text" v-if="model.textSource" v-html="model.textSource"></div>
               <div class="article__source-image" v-if="model.imageSource">
                 <figure class="article__source-figure" >
-                  <!-- <img :src="model.imageSource.url" :alt="model.imageSource.alt" /> -->
                   <datocms-image class="article__source-image-media" :data="model.imageSource.responsiveImage" />
                 </figure>
               </div>

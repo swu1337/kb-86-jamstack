@@ -7,7 +7,6 @@
         <h1 class="author__title">{{ author.name }}</h1>
         <div class="author__description">
           <figure class="author__figure" v-if="author.photo">
-            <!-- <img class="author__media" v-if="author" :src="author.photo.url" :alt="author.photo.alt" /> -->
             <datocms-image class="author__media" :data="author.photo.responsiveImage" />
           </figure>
           <div class="author__figure" v-else>

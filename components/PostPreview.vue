@@ -2,7 +2,6 @@
   <article class="post-preview">
     <nuxt-link :to="`/blogs/${post.slug}`" class="post-preview__link post-preview__link--wrapper">
       <figure class="post-preview__figure" v-if="post.featuredImage">
-        <!-- <img :src="post.featuredImage.url" :alt="post.featuredImage.alt" class="post-preview__media" /> -->
         <datocms-image class="post-preview__media" :data="post.featuredImage.responsiveImage" />
       </figure>
       <figure class="post-preview__figure" v-else>
